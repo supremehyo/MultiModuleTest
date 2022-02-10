@@ -14,16 +14,16 @@ import android.widget.Toast
 class Button2 : AppCompatButton
 {
     constructor(context: Context) : super(context){
-        init(context)
+        init()
     }
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs){
-        init(context)
+        init()
     }
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr){
-        init(context)
+        init()
     }
 
-    fun init(context: Context){
+    fun init(){
         gravity = Gravity.CENTER
         text = "UI 모듈 테스트 버튼"
         setBackgroundColor(Color.parseColor("#000000"))

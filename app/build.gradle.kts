@@ -2,7 +2,10 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
+    id("dagger.hilt.android.plugin")
+
 }
+
 
 android {
     compileSdkVersion(Versions.COMPILE_SDK_VERSION)
@@ -29,6 +32,9 @@ android {
             )
         }
     }
+    buildFeatures.dataBinding = true
+    buildFeatures.viewBinding = true
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -41,12 +47,29 @@ android {
 dependencies {
 
     implementation (Kotlin.KOTLIN_STDLIB)
+    implementation (Kotlin.COROUTINES_ANDROID)
+    implementation (Kotlin.COROUTINES_CORE)
 
     implementation (AndroidX.CORE_KTX)
     implementation (AndroidX.APP_COMPAT)
+    implementation (AndroidX.ACTIVITY_KTX)
+    implementation (AndroidX.FRAGMENT_KTX)
+    implementation (AndroidX.LIFECYCLE_VIEWMODEL_KTX)
+    implementation (AndroidX.LIFECYCLE_LIVEDATA_KTX)
+    implementation (AndroidX.LIFECYCLE_EXTENSIONNS)
+
+
+    //retrofit2
+    implementation (Libraries.OKHTTP)
+    implementation (Libraries.OKHTTP_LOGGING_INTERCEPTOR)
+    implementation (Libraries.RETROFIT)
+    implementation (Libraries.RETROFIT_CONVERTER_GSON)
 
     implementation (Google.MATERIAL)
-
+    implementation (Google.HILT_ANDROID)
+   // implementation (Google.HILT_ANDROID_COMPILER)
+    kapt ("com.google.dagger:hilt-android-compiler:${Versions.HILT}")
+    implementation("androidx.appcompat:appcompat:1.4.0")
     testImplementation (UnitTest.JUNIT)
 
     androidTestImplementation (AndroidTest.ANDROID_JUNIT)
@@ -54,4 +77,5 @@ dependencies {
 
     //멀티모듈 관리
     implementation(project(":ui"))
+    implementation(project(":base"))
 }
