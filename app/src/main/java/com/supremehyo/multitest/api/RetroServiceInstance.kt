@@ -8,5 +8,5 @@ import retrofit2.http.Path
 
 interface RetroServiceInstance {
     @GET("users/{owner}/repos")
-    suspend fun getRepos(@Path("owner") owner: String) : List<GithubRepo>
+    suspend fun getRepos(@Path("owner") owner: String) :List<GithubRepo>
 }

@@ -9,6 +9,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.forEach
 import kotlinx.coroutines.launch
 
 
@@ -21,19 +22,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     //빨간색 나왔던 이유  fragment:fragment-ktx  activity:activity-ktx 의존성이 없어서
     private val viewModel: MainViewModel by viewModels()
 
-
     override fun initStartView() {
         viewModel.getGitHubData("supremehyo")
     }
 
     override fun initDataBinding() {
-
         val scope = CoroutineScope(Dispatchers.IO)
         scope.launch {
             viewModel.gitHubData.collect {
-                it.forEach {
-                    Log.v("gitData" , it.name)
-                }
+                    it.forEach {
+                        Log.v("gitData" , it.name)
+                    }
             }
         }
     }
