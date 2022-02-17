@@ -19,7 +19,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_main
 
-    //fragment:fragment-ktx  activity:activity-ktx 의존성이 없어서
     private val viewModel: MainViewModel by viewModels()
 
     override fun initStartView() {
